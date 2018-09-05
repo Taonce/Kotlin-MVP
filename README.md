@@ -2,7 +2,7 @@
 基于Kotlin语言，结合RxJava、OkHttp3和Retrofit2搭建的APP基本框架
 
 工程目录如下图
-![工程目录](_v_images/_工程目录_1536149158_1381438615.png)
+https://github.com/Taonce/Kotlin-RxJava-Retrofit/blob/master/img/app.png
 
 ①网络封装在http目录下
 ②采用了MVP设计模式来构建工程,在BaseActivity中解决了presenter和view层的绑定,防止内存泄露
