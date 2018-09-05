@@ -4,6 +4,7 @@
 工程目录如下图
 ![Image Alt app](https://github.com/Taonce/Kotlin-RxJava-Retrofit/blob/master/img/app.png)
 
+
 ①网络封装在http目录下
 
 ②采用了MVP设计模式来构建工程,在BaseActivity中解决了presenter和view层的绑定,防止内存泄露
