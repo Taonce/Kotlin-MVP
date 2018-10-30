@@ -3,18 +3,21 @@ package com.taonce.kotlindemo.base
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.taonce.kotlindemo.R
-import com.taonce.kotlindemo.presenter.BasePresenter
-import com.taonce.kotlindemo.view.inter.BaseViewImp
+import com.taonce.kotlindemo.ui.inter.IBaseView
 
-abstract class BaseActivity : AppCompatActivity(), BaseViewImp {
+abstract class BaseActivity<V, T : BasePresenter<V>> : AppCompatActivity(), IBaseView {
 
     private var baseLoadingView: BaseLoadingView? = null
+    private var basePresenter: T? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
+        basePresenter = getPresenter()
+        basePresenter?.attachView(this as V)
         initLoadingView()
-        initData()
         initView()
+        initData()
         initEvent()
     }
 
@@ -26,7 +29,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseViewImp {
 
     abstract fun initEvent()
 
-    abstract fun bindPresenter(): BasePresenter
+    abstract fun getPresenter(): T
+
 
     override fun onResume() {
         super.onResume()
@@ -37,12 +41,15 @@ abstract class BaseActivity : AppCompatActivity(), BaseViewImp {
 
         // 销毁dialog
         if (null != baseLoadingView && baseLoadingView!!.isShowing) {
-            baseLoadingView!!.dismiss()
+            baseLoadingView?.dismiss()
         }
         baseLoadingView = null
 
         // 在activity销毁时，解绑activity和presenter
-        bindPresenter().detachView()
+        if (basePresenter != null) {
+            basePresenter?.detachView()
+            basePresenter = null
+        }
     }
 
     override fun onStop() {
@@ -59,16 +66,16 @@ abstract class BaseActivity : AppCompatActivity(), BaseViewImp {
 
     private fun showLoadingView() {
         if (null != baseLoadingView) {
-            baseLoadingView!!.show()
+            baseLoadingView?.show()
         } else {
             initLoadingView()
-            baseLoadingView!!.show()
+            baseLoadingView?.show()
         }
     }
 
     private fun hideLoadingView() {
         if (null != baseLoadingView && baseLoadingView!!.isShowing) {
-            baseLoadingView!!.cancel()
+            baseLoadingView?.cancel()
         }
     }
 
@@ -82,4 +89,5 @@ abstract class BaseActivity : AppCompatActivity(), BaseViewImp {
     override fun hideLoading() {
         hideLoadingView()
     }
+
 }

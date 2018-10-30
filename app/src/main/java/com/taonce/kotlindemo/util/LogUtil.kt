@@ -12,7 +12,7 @@ import android.util.Log
 
 object LogUtil {
 
-    fun showLog(tag: String = "kotlin", msg: String) {
+    fun showLog(tag: String = "taonce", msg: String) {
         Log.d(tag, msg)
     }
 }

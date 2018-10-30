@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.base_loading_view.*
 
 
 /**
- * Author: taoyongxiang
+ * Author: taonce
  * Date: 2018/9/5
  * Project: KotlinDemo
  * Desc: 基础的加载框

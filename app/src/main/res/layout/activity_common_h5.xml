@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_h5_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawableStart="@mipmap/back"
+        android:drawablePadding="5dp"
+        android:maxLines="1"
+        android:paddingStart="10dp"
+        android:gravity="center_vertical"
+        tools:text="github"
+        android:textColor="@color/colorPrimary" />
+
+    <ProgressBar
+        android:id="@+id/pb_h5"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/wv_h5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
+</LinearLayout>
