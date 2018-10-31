@@ -240,7 +240,7 @@ abstract class BaseActivity<V, T : BasePresenter<V>> : AppCompatActivity(), IBas
 
 ------
 
-整个封装就介绍到这里啦，如果大家觉得有什么不足的地方，欢迎随时交流沟通，期待你们的批评。项目已上传GitHub，地址为：https://github.com/Taonce/Kotlin-RxJava-Retrofit
+整个封装就介绍到这里啦，如果大家觉得有什么不足的地方，欢迎随时交流沟通，期待你们的批评。
 
 # 使用
 直接将工程clone到本地,基本的框架已经搭建好,只需根据自己项目的特点添加功能就行
@@ -248,3 +248,17 @@ abstract class BaseActivity<V, T : BasePresenter<V>> : AppCompatActivity(), IBas
 ⊙开源不易，希望给个star或者fork奖励
 
 ⊙长期不定时更新,开源地址:https://github.com/Taonce
+
+
+
+#### 写在最后
+
+**每个人不是天生就强大,你若不努力,如何证明自己,加油!**
+
+**Thank You!**
+
+**--Taonce**
+
+**如果你觉得这篇文章对你有所帮助，那么就动动小手指，扫描下方的二维码，关注一波吧~~非常期待大家的加入，这是一个专注于Android和Kotlin的公众号 ^.^**
+
+![专注Kotlin知识的公众号](https://upload-images.jianshu.io/upload_images/6297937-b17430c03e89b9e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
