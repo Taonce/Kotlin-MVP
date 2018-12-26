@@ -2,14 +2,14 @@ package com.taonce.kotlindemo.ui.demo
 
 import android.widget.Toast
 import com.taonce.kotlindemo.R
-import com.taonce.kotlindemo.base.BaseActivity
+import com.taonce.kotlindemo.base.BaseMVPActivity
 import com.taonce.kotlindemo.bean.AndroidBean
 import com.taonce.kotlindemo.contract.IMainView
 import com.taonce.kotlindemo.presenter.MainPresenter
 import com.taonce.kotlindemo.util.LogUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity<IMainView, MainPresenter>(), IMainView {
+class MainMVPActivity : BaseMVPActivity<IMainView, MainPresenter>(), IMainView {
 
     private var mainPresenter: MainPresenter? = null
 

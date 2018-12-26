@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.taonce.kotlindemo.R
 import com.taonce.kotlindemo.ui.inter.IBaseView
 
-abstract class BaseFragment : Fragment(), IBaseView {
+abstract class BaseMVPFragment : Fragment(), IBaseView {
 
     private var baseLoadingView: BaseLoadingView? = null
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
