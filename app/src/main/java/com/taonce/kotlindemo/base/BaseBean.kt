@@ -7,5 +7,6 @@ package com.taonce.kotlindemo.base
  * Project: KotlinDemo
  * Desc:
  */
-open class BaseBean(error: String) {
+open class BaseBean{
+    var error:String = ""
 }

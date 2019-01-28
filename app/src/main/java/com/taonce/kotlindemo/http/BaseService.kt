@@ -1,4 +1,4 @@
-package com.taonce.kotlindemo.Http
+package com.taonce.kotlindemo.http
 
 import com.taonce.kotlindemo.bean.AndroidBean
 import io.reactivex.Observable

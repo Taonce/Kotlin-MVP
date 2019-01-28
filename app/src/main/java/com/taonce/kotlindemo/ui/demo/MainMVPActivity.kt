@@ -11,14 +11,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainMVPActivity : BaseMVPActivity<IMainView, MainPresenter>(), IMainView {
 
-    private var mainPresenter: MainPresenter? = null
+    private val mainPresenter by lazy {
+        getPresenter()
+    }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
 
     override fun initData() {
-        mainPresenter?.getAndroidData("android", 1)
+        mainPresenter.getAndroidData("android", 1)
     }
 
     override fun initView() {
@@ -27,10 +29,7 @@ class MainMVPActivity : BaseMVPActivity<IMainView, MainPresenter>(), IMainView {
     override fun initEvent() {
     }
 
-    override fun getPresenter(): MainPresenter {
-        mainPresenter = MainPresenter(this)
-        return mainPresenter!!
-    }
+    override fun getPresenter(): MainPresenter = MainPresenter(this)
 
 
     override fun showAndroidData(bean: AndroidBean) {

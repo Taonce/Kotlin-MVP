@@ -6,9 +6,8 @@ import com.taonce.kotlindemo.model.MainModel
 import com.taonce.kotlindemo.contract.IMainModel
 import com.taonce.kotlindemo.contract.IMainView
 
-class MainPresenter(mView: IMainView) : BasePresenter<IMainView>(), IMainModel.OnGetAndroidDataListener {
+class MainPresenter(private var mView: IMainView) : BasePresenter<IMainView>(), IMainModel.OnGetAndroidDataListener {
 
-    private var mView: IMainView? = mView
     private var mModel: IMainModel? = null
 
     init {
@@ -16,19 +15,15 @@ class MainPresenter(mView: IMainView) : BasePresenter<IMainView>(), IMainModel.O
     }
 
     fun getAndroidData(category: String, page: Int) {
-        this.mView?.showLoading()
+        this.mView.showLoading()
         this.mModel?.getAndroidData(category, page, this)
     }
 
     override fun onGetAndroidDataFinished(bean: AndroidBean?) {
-        this.mView?.hideLoading()
-        if (bean != null) {
-            mView?.showAndroidData(bean)
-            if (bean.error == "true") {
-                mView?.showErrorMsg()
-            }
-        } else {
-            mView?.showErrorMsg()
+        mView.hideLoading()
+
+        bean?.let {
+            mView.showAndroidData(it)
         }
     }
 
