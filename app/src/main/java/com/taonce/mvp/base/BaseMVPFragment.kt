@@ -11,15 +11,16 @@ import com.taonce.mvp.ui.inter.IBaseView
 abstract class BaseMVPFragment : Fragment(), IBaseView {
 
     private var baseLoadingView: BaseLoadingView? = null
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return if (getLayoutId() != 0) {
-            inflater?.inflate(getLayoutId(), container, false)
+            inflater.inflate(getLayoutId(), container, false)
         } else {
             super.onCreateView(inflater, container, savedInstanceState)
         }
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         initData()
@@ -35,7 +36,7 @@ abstract class BaseMVPFragment : Fragment(), IBaseView {
     abstract fun initEvent()
 
     private fun initLoadingView() {
-        baseLoadingView = BaseLoadingView(this.context, R.style.transparent_dialog)
+        baseLoadingView = BaseLoadingView(this.context!!, R.style.transparent_dialog)
     }
 
     private fun showLoadingView() {

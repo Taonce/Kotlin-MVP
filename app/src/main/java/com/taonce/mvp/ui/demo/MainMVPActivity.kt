@@ -33,10 +33,9 @@ class MainMVPActivity : BaseMVPActivity<IMainView, MainPresenter>(), IMainView {
 
 	override fun getPresenter(): MainPresenter = MainPresenter(this)
 
-
 	override fun showAndroidData(bean: AndroidBean) {
 		LogUtil.showLog(msg = "$bean")
-		rl_android.layoutManager = LinearLayoutManager(this)
+		rl_android.layoutManager = LinearLayoutManager(this@MainMVPActivity)
 		val adapter = MainAdapter(this, R.layout.item_android, bean.results)
 		rl_android.adapter = adapter
 		adapter.setOnItemClickListener {
