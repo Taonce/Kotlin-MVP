@@ -1,6 +1,7 @@
 package com.taonce.kotlindemo.ui.demo
 
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Toast
 import com.taonce.kotlindemo.R
 import com.taonce.kotlindemo.base.BaseMVPActivity
@@ -36,7 +37,15 @@ class MainMVPActivity : BaseMVPActivity<IMainView, MainPresenter>(), IMainView {
 	override fun showAndroidData(bean: AndroidBean) {
 		LogUtil.showLog(msg = "$bean")
 		rl_android.layoutManager = LinearLayoutManager(this)
-		rl_android.adapter = MainAdapter(this, R.layout.item_android, bean.results)
+		val adapter = MainAdapter(this, R.layout.item_android, bean.results)
+		rl_android.adapter = adapter
+		adapter.setOnItemClickListener {
+			LogUtil.showLog(msg = "Click position is $it")
+		}
+		adapter.setOnItemLongClickListener {
+			LogUtil.showLog(msg = "Long Click position is $it")
+			return@setOnItemLongClickListener true
+		}
 	}
 
 	override fun showErrorMsg(msg: String) {

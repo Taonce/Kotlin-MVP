@@ -18,8 +18,8 @@ abstract class BaseAdapter<T>(private val ctx: Context, private val layoutRes: I
 	: RecyclerView.Adapter<BaseHolder>() {
 
 	// 利用闭包实现点击事件的lambda语法
-	private lateinit var mItemClick: (position: Int) -> Unit
-	private lateinit var mItemLongClick: (position: Int) -> Boolean
+	private var mItemClick: ((position: Int) -> Unit)? = null
+	private var mItemLongClick: ((position: Int) -> Boolean)? = null
 
 	fun setOnItemClickListener(itemClick: (position: Int) -> Unit) {
 		this.mItemClick = itemClick
@@ -34,10 +34,12 @@ abstract class BaseAdapter<T>(private val ctx: Context, private val layoutRes: I
 		convert(holder, position)
 		holder.itemView.setOnClickListener {
 			// 这里一定要实现闭包的invoke()方法
-			mItemClick.invoke(position)
+			mItemClick?.invoke(position)
 		}
 		holder.itemView.setOnLongClickListener {
-			mItemLongClick.invoke(position)
+			if (mItemLongClick != null) {
+				mItemLongClick!!.invoke(position)
+			} else return@setOnLongClickListener false
 		}
 	}
 
@@ -64,8 +66,8 @@ abstract class BaseAdapter<T>(private val ctx: Context, private val layoutRes: I
 
 	/**
 	 * 添加数据
-	 * listData：添加的数据
-	 * isDelete：是否删除原来的数据
+	 * [listData]：添加的数据
+	 * [isDelete]：是否删除原来的数据
 	 */
 	fun addListData(listData: MutableList<T>, isDelete: Boolean) {
 		if (isDelete) {
@@ -77,7 +79,7 @@ abstract class BaseAdapter<T>(private val ctx: Context, private val layoutRes: I
 
 	/**
 	 * 删除指定项数据
-	 * position:从0开始
+	 * [position]:从0开始
 	 */
 	fun deletePositionData(position: Int) {
 		// 防止position越界
