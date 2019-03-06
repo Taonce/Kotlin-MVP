@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     tools:context="com.taonce.kotlindemo.ui.demo.MainMVPActivity">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tv_android_data"/>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

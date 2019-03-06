@@ -2,7 +2,7 @@ package com.taonce.kotlindemo.bean
 
 import com.taonce.kotlindemo.base.BaseBean
 
-data class AndroidBean(val count: Int, val results: List<Results>) : BaseBean() {
+data class AndroidBean(val count: Int, val results: MutableList<Results>) : BaseBean() {
     override fun toString(): String {
         return "AndroidBean(count=$count, results=$results, error=$error)"
     }
